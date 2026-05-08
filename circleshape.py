@@ -14,10 +14,15 @@ class CircleShape(pygame.sprite.Sprite):
         self.radius = radius
 
     def draw(self, screen):
-        self.screen = screen
-        self.color = 'white'
+        pass
         
 
     def update(self, dt):
         # must override
         pass
+
+    def collides_with(self, other):
+        sum_radius = self.radius + other.radius
+        if sum_radius > self.position.distance_to(other.position):
+            return True
+        return False
